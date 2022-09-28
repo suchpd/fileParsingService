@@ -62,4 +62,29 @@ public class FileUtil {
 
         System.out.println(fileInfo);
     }
+
+    public static byte[] getFile(String path) throws IOException {
+        File file = new File(path);
+
+        if(!file.exists()){
+            throw new FileNotFoundException("文件不存在！");
+        }
+
+        long fileSize = file.length();
+        FileInputStream fileInputStream;
+        byte[] buffer = new byte[(int) fileSize];
+
+        try
+        {
+            //convert file into array of bytes
+            fileInputStream = new FileInputStream(file);
+            fileInputStream.read(buffer);
+            fileInputStream.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return buffer;
+    }
 }

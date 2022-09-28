@@ -5,6 +5,8 @@ import com.file.parsing.service.utils.SmbFileUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class FileParsingServiceApplication {
 
@@ -23,8 +25,11 @@ public class FileParsingServiceApplication {
 //            SmbFileUtil.smbDownload("smb://192.168.205.128/MyShare/Test.txt","C:\\Users\\13299\\Desktop");
 
             //下载共享文件夹下最新的文件
-            SmbFileUtil.smbDownloadLastFile("smb://192.168.205.128/MyShare/","C:\\Users\\13299\\Desktop");
+//            SmbFileUtil.smbDownloadLastFile("smb://192.168.205.128/MyShare/","C:\\Users\\13299\\Desktop");
 
+            //读取本地文件
+            byte[] file = FileUtil.getFile("C:\\Users\\13299\\Desktop\\Test.txt");
+            System.out.println(Arrays.toString(file));
         }catch (Exception e){
             System.out.println(e);
         }
